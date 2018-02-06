@@ -17,7 +17,7 @@ In order to deploy the postgres-release you must follow the standard steps for d
 
 1. Deploy and run a BOSH director.
    Please refer to [BOSH documentation](http://bosh.io/docs) for instructions on how to do that.
-   Bosh-lite specific instructions can be found [here](https://github.com/cloudfoundry/bosh-lite).
+   BOSH Lite specific instructions can be found [here](https://bosh.io/docs/bosh-lite).
 
 1. Install the BOSH command line Interface (CLI) v2+.
    Please refer to [BOSH CLI documentation](https://bosh.io/docs/cli-v2.html#install). Use the CLI to target your director.
@@ -25,7 +25,7 @@ In order to deploy the postgres-release you must follow the standard steps for d
 1. Upload the desired stemcell directly to bosh. [bosh.io](http://bosh.io/stemcells) provides a resource to find and download stemcells.
 
    ```
-   # Example for bosh-lite
+   # Example for BOSH Lite
    bosh upload-stemcell https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent
    ```
 
@@ -54,7 +54,7 @@ In order to deploy the postgres-release you must follow the standard steps for d
    [This example operation file](templates/v2/operations/set_properties.yml) is a great starting point.
    Note: when using this operation file, you will need to inject `pgadmin_database_password` at `bosh deploy`-time, which is a good pattern for keeping credentials out of manifests.
 
-   For deployment on bosh-lite, the VM- and disk types defined by the postgres-release can be changed to `default` (as specified by the cloud-config that [comes with bosh-lite](https://github.com/cloudfoundry/bosh-deployment/blob/master/warden/cloud-config.yml)) using the following ops file:
+   For deployment on BOSH Lite, the VM- and disk types defined by the postgres-release can be changed to `default` (as specified by the cloud-config that [comes with bosh-lite](https://github.com/cloudfoundry/bosh-deployment/blob/master/warden/cloud-config.yml)) using the following ops file:
 
    ```bash
    scripts/generate-deployment-manifest-v2 -o templates/v2/operations/use-lite-types.yml > /tmp/pg.yml
